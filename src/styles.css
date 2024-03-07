@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Madimi+One&display=swap');
+
+.font-madimi-one {
+    font-family: 'Madimi One', cursive;
+    /* Add other styles as needed */
+}
