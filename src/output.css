@@ -675,11 +675,6 @@ video {
   text-align: center;
 }
 
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
-}
-
 .text-6xl {
   font-size: 3.75rem;
   line-height: 1;
@@ -703,11 +698,6 @@ video {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
-}
-
-.text-8xl {
-  font-size: 6rem;
-  line-height: 1;
 }
 
 .font-bold {
@@ -862,16 +852,6 @@ video {
     padding-right: 2rem;
   }
 
-  .lg\:text-2xl {
-    font-size: 1.5rem;
-    line-height: 2rem;
-  }
-
-  .lg\:text-xl {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-  }
-
   .lg\:text-4xl {
     font-size: 2.25rem;
     line-height: 2.5rem;
@@ -879,6 +859,11 @@ video {
 }
 
 @media (min-width: 1280px) {
+  .xl\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
   .xl\:text-6xl {
     font-size: 3.75rem;
     line-height: 1;
@@ -887,15 +872,5 @@ video {
   .xl\:text-8xl {
     font-size: 6rem;
     line-height: 1;
-  }
-
-  .xl\:text-xl {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-  }
-
-  .xl\:text-2xl {
-    font-size: 1.5rem;
-    line-height: 2rem;
   }
 }
