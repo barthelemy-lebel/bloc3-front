@@ -675,6 +675,11 @@ video {
   text-align: center;
 }
 
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
 .text-6xl {
   font-size: 3.75rem;
   line-height: 1;
@@ -764,7 +769,6 @@ video {
 
 .font-madimi-one {
   font-family: 'Madimi One', cursive;
-  /* Add other styles as needed */
 }
 
 .placeholder\:text-gray-400::-moz-placeholder {
