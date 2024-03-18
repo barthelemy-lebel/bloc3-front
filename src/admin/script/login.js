@@ -14,14 +14,14 @@ async function login() {
 
         if (password === document.getElementById('password').value) {
             window.location.href = 'accueil.html'
-            console.log(userData.clients)
             localStorage.setItem('email', userData.email);
+            localStorage.setItem('id', userData.id);
             localStorage.setItem('nom', userData.nom);
             localStorage.setItem('prenom', userData.prenom);
             localStorage.setItem('password', userData.password);
             localStorage.setItem('tel', userData.tel);
             localStorage.setItem('clients', userData.clients);
-            localStorage.setItem('annonces', userData.annonces);
+            localStorage.setItem('submission', userData.submission);
         } else {
             document.getElementById('password-placeholder').textContent = 'Mot de passe incorrect'
             document.getElementById('password-placeholder').style.color = 'red'
