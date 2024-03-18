@@ -10,6 +10,7 @@
     <link rel="icon" type="image/x-icon" href="../assets/logo-favicon.png">
 
     <script type="module" src="../components/navbar.js" defer></script>
+    <script type="module" src="../components/popup.js" defer></script>
     <script src="/src/admin/script/accueil.js" defer></script>
     <title>MeetImo-Accueil</title>
 </head>
@@ -69,11 +70,12 @@
                 <button class="flex w-full justify-center rounded-md bg-main-purple px-3 py-1.5 mt-8 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" onclick="addSubmission()">
                     Ajouter
                 </button>
-                
             </div>
         </div>
     </div>
-    <script></script>
+    <div id="popupContainer">
+        <app-popup type="validation" text="L'annonce à bien été ajouté."></app-popup>
+    </div>
 </body>
 
 </html>

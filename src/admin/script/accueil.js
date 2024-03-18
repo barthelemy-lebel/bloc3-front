@@ -4,7 +4,8 @@ const nom = localStorage.getItem('nom')
 const clients = localStorage.getItem('clients')
 const annonces = localStorage.getItem('submission')
 const id = localStorage.getItem('id')
-console.log(id)
+
+const $popup = document.querySelector('app-popup')
 
 fetch(`${apiEndpoint}admins/${id}`)
   .then(response => {
@@ -56,8 +57,11 @@ function addSubmission() {
     return response.json();
   })
   .then(data => {
-    console.log('Réponse de l\'API :', data);
-    // Ajoutez ici le code pour gérer la réponse de l'API si nécessaire
+    $popup.show()
+    setTimeout(function() {
+      $popup.hide()
+      location.reload()
+    }, 800)
   })
   .catch(error => {
     console.error('Erreur lors de la requête :', error);
