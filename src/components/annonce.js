@@ -51,6 +51,7 @@ class Card extends LitElement {
       price: {type: String},
       surface: {type: String},
       location: {type: String},
+      id: {type:String},
     }
   }
 
@@ -60,16 +61,17 @@ class Card extends LitElement {
     this.price = ""
     this.surface = ""
     this.location = ""
+    this.redirection = ""
   }
 
   render() {
     return html`
     <div class="custom-container">
-      <a href="#" class="image-link">
+      <a href="annonce-detail.html" class="image-link">
         <img class="rounded-top" src="/src/assets/fond-annonce.jpg" alt="" />
       </a>
       <div class="content">
-        <a href="#" class="title-link">
+        <a href="annonce-detail.html" class="title-link">
             <h5 class="title">${this.title}</h5>
         </a>
         <p class="description">${this.price}€/mois - ${this.surface}m² - ${this.location}</p>
@@ -80,4 +82,4 @@ class Card extends LitElement {
   }
 }
 
-customElements.define('app-annonce', Card);
+customElements.define('app-submission', Card);

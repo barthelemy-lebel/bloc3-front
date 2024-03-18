@@ -8,13 +8,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Madimi+One&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="../assets/logo-favicon.png">
 
+    
+
     <script type="module" src="../components/navbar.js" defer></script>
     <script type="module" src="../components/annonce.js" defer></script>
+
+    <script src="/src/admin/script/annonces-list.js" defer></script>
     <title>MeetImo-Annonces</title>
 </head>
 <body>
     <app-navbar items='["Accueil", "Clients", "Annonces", "Profil"]'></app-navbar>
-    <app-annonce title="Magnifique Loft" price="500" surface="125" location="Bordeaux Centre"></app-annonce>
-    
+
+    <div id="submissionContainer" class="flex flex-col"></div>
 </body>
 </html>
