@@ -12,7 +12,7 @@ fetch(`${apiEndpoint}admins/${id}`)
     if (!response.ok) {
       throw new Error(`Erreur HTTP ! Statut : ${response.status}`)
     }
-    return response.json() // Convertir la réponse en JSON
+    return response.json()
   })
   .then(adminData => {
     const submissions = adminData.submissions
@@ -22,17 +22,16 @@ fetch(`${apiEndpoint}admins/${id}`)
           if (!submissionResponse.ok) {
             throw new Error(`Erreur HTTP ! Statut : ${submissionResponse.status}`)
           }
-          return submissionResponse.json() // Convertir la réponse en JSON
+          return submissionResponse.json()
         })
         .then(submissionData => {
-          // Faites quelque chose avec les données de soumission, par exemple, créez une carte avec les données
           const newCard = document.createElement('app-submission')
           newCard.title = submissionData.title
           newCard.price = submissionData.price
           newCard.surface = submissionData.surface
           newCard.location = submissionData.location
+          newCard.submission_id = submissionData.id
 
-          // Ajoutez la nouvelle carte à votre application, par exemple, à un conteneur existant avec l'ID 'cardContainer'
           document.getElementById('submissionContainer').appendChild(newCard)
         })
         .catch(error => {
