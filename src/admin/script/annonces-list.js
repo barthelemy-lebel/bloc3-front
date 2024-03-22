@@ -4,7 +4,6 @@ const nom = localStorage.getItem('nom')
 const clients = localStorage.getItem('clients')
 const annonces = localStorage.getItem('submission')
 const id = localStorage.getItem('id')
-
 const $popup = document.querySelector('app-popup')
 
 fetch(`${apiEndpoint}admins/${id}`)

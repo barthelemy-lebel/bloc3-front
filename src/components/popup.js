@@ -1,3 +1,15 @@
+/**Pop-up Componnents
+ * Génère une pop-up.
+ * 
+ * Propriétés :
+ *  - type: type[str]
+ *  - text: type[str]
+ *  - visible: type[str]
+ * 
+ * Example : 
+ *    <app-popup type="validation" text="L'annonce à bien été ajouté."></app-popup>
+ */
+
 import { LitElement, css, html } from 'https://cdn.jsdelivr.net/gh/lit/dist@3/core/lit-core.min.js';
 
 class Popup extends LitElement {
@@ -48,15 +60,13 @@ class Popup extends LitElement {
     super();
     this.type = '';
     this.text = '';
-    this.visible = false; // Initialiser la visibilité à false
+    this.visible = false;
   }
 
-  // Méthode pour afficher la popup
   show() {
     this.visible = true;
   }
 
-  // Méthode pour masquer la popup
   hide() {
     this.visible = false;
   }

@@ -4,45 +4,36 @@ const nom = localStorage.getItem('nom')
 const clients = localStorage.getItem('clients')
 const annonces = localStorage.getItem('submission')
 const id = localStorage.getItem('id')
-
 const $popup = document.querySelector('app-popup')
 
 fetch(`${apiEndpoint}admins/${id}`)
   .then(response => {
     if (!response.ok) {
-      throw new Error(`Erreur HTTP ! Statut : ${response.status}`);
+      throw new Error(`Erreur HTTP ! Statut : ${response.status}`)
     }
-    return response.json(); // Convertir la réponse en JSON
+    return response.json()
   })
   .then(adminData => {
-    // Une fois que les données sont disponibles
-    const nbClients = adminData.clients.length;
-    const nbSubmissions = adminData.submissions.length;
+    const nbClients = adminData.clients.length
+    const nbSubmissions = adminData.submissions.length
 
-    // Mettre à jour votre interface utilisateur avec les données
-    document.getElementById("name").textContent = prenom;
-    document.getElementById("nbClients").textContent = nbClients;
-    document.getElementById("nbAnnonces").textContent = nbSubmissions;
+    document.getElementById("name").textContent = prenom
+    document.getElementById("nbClients").textContent = nbClients
+    document.getElementById("nbAnnonces").textContent = nbSubmissions
   })
   .catch(error => {
-    console.error('Erreur lors de la requête :', error);
-    // Gérer les erreurs si nécessaire
-  });
-
+    console.error('Erreur lors de la requête :', error)
+  })
 
 function addSubmission() {
-  // Récupérer les données du formulaire
   const formData = {
     'title': document.getElementById('title').value,
     'surface': document.getElementById('surface').value,
     'price': document.getElementById('price').value,
     'location': document.getElementById('location').value,
     'admin': `${apiEndpoint}admins/${id}`
-  };
+  }
 
-  console.log(JSON.stringify(formData));
-
-  // Effectuer la requête POST à l'API
   fetch('http://127.0.0.1:8000/api/submissions', {
     method: 'POST',
     headers: {
@@ -52,9 +43,9 @@ function addSubmission() {
   })
   .then(response => {
     if (!response.ok) {
-      throw new Error(`Erreur HTTP ! Statut : ${response.status}`);
+      throw new Error(`Erreur HTTP ! Statut : ${response.status}`)
     }
-    return response.json();
+    return response.json()
   })
   .then(data => {
     $popup.show()
@@ -64,8 +55,6 @@ function addSubmission() {
     }, 800)
   })
   .catch(error => {
-    console.error('Erreur lors de la requête :', error);
-    // Ajoutez ici le code pour gérer les erreurs si nécessaire
-  });
+    console.error('Erreur lors de la requête :', error)
+  })
 }
-
