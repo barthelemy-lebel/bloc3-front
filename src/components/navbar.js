@@ -1,4 +1,13 @@
-// navbar.js
+/**Navbar Componnents
+ * Génère une nav bar en fonction des items passé.
+ * 
+ * Propriétés :
+ *  - items: type[list]
+ * 
+ * Example : 
+ *    <app-navbar items='["Accueil", "Clients", "Annonces", "Profil"]'></app-navbar>
+ */
+
 import { LitElement, css, html } from 'https://cdn.jsdelivr.net/gh/lit/dist@3/core/lit-core.min.js';
 
 class Navbar extends LitElement {
