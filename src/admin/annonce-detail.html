@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="../output.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Madimi+One&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="../assets/logo-favicon.png">
+
+  <script type="module" src="../components/navbar.js" defer></script>
+
+  <script type="module" src="/src/admin/script/annonce-details.js" defer></script>
+  <title>MeetImo-Annonce-Details</title>
+</head>
+<body>
+  <app-navbar items='["Accueil", "Clients", "Annonces", "Profil"]'></app-navbar>
+
+  <div class="container flex flex-col w-full p-4">
+    <div id="title" class="text-3xl text-gray-800 font-semibold"></div>
+    <div id="photos" class="w-full h-80 border border-gray-800"></div>
+    <div class="main-infos flex flex-row text-gray-800">
+      <div id="location" class="text-xl mr-2">Bordeaux Centre</div>-
+      <div id="surface" class="text-xl ml-2">150</div>m² -
+      <div id="price" class="text-xl ml-2">1700</div>€
+    </div>
+    <div id="description" class="w-full">
+      
+    </div>
+    
+  </div>
+</body>
+</html>
