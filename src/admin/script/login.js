@@ -14,6 +14,7 @@ async function login() {
 
         if (password === document.getElementById('password').value) {
             window.location.href = 'accueil.html'
+            console.log(userData)
             localStorage.setItem('email', userData.email)
             localStorage.setItem('id', userData.id)
             localStorage.setItem('nom', userData.nom)
