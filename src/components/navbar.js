@@ -71,6 +71,7 @@ class Navbar extends LitElement {
         width: 100%;
         background-color: #79a9d1;
         padding: 1rem;
+        z-index: 10000;
       }
 
       ul.show {
