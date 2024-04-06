@@ -8,8 +8,10 @@ class Card extends LitElement {
   static styles = css`
     #submission {
       width: 75%;
+      height: 285px;
+      max-width: 320px;
       background-color: #79a9d1;
-      border-radius: 0.25rem;
+      border-radius: 0.5rem;
       margin-top: 2rem;
       margin-left: auto;
       margin-right: auto;
@@ -27,7 +29,8 @@ class Card extends LitElement {
     }
 
     .content {
-        padding: 1.25rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 
     .title-link {

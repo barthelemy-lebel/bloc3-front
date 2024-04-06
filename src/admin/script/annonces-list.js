@@ -30,7 +30,7 @@ fetch(`${apiEndpoint}admins/${id}`)
           newCard.surface = submissionData.surface
           newCard.location = submissionData.location
           newCard.submission_id = submissionData.id
-
+          newCard.style.margin = 'auto'
           document.getElementById('submissionContainer').appendChild(newCard)
         })
         .catch(error => {
