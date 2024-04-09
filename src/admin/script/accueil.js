@@ -1,12 +1,13 @@
-const apiEndpoint = 'http://127.0.0.1:8000/api/'
-const prenom = localStorage.getItem('prenom')
-const nom = localStorage.getItem('nom')
-const clients = localStorage.getItem('clients')
-const annonces = localStorage.getItem('submission')
-const id = localStorage.getItem('id')
-const $popup = document.querySelector('app-popup')
+const apiEndpoint = 'http://127.0.0.1:8000'
+const token = localStorage.getItem('jwt-token')
+const adminEmail= localStorage.getItem('email')
 
-fetch(`${apiEndpoint}admins/${id}`)
+fetch(`${apiEndpoint}/api/users/email/${adminEmail}`, {
+  method: 'GET',
+  headers: {
+      'Authorization': `Bearer ${token}`
+  }
+  })
   .then(response => {
     if (!response.ok) {
       throw new Error(`Erreur HTTP ! Statut : ${response.status}`)
@@ -14,11 +15,9 @@ fetch(`${apiEndpoint}admins/${id}`)
     return response.json()
   })
   .then(adminData => {
-    const nbClients = adminData.clients.length
     const nbSubmissions = adminData.submissions.length
 
-    document.getElementById("name").textContent = prenom
-    document.getElementById("nbClients").textContent = nbClients
+    document.getElementById("name").textContent = adminData.firstname
     document.getElementById("nbAnnonces").textContent = nbSubmissions
   })
   .catch(error => {
