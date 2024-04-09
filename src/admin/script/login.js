@@ -1,33 +1,32 @@
-const apiEndpoint = 'http://127.0.0.1:8000/admin'
+const apiEndpoint = 'http://127.0.0.1:8000'
 
 async function login() {
-    try {
-        const userEmail = document.getElementById('email').value
-        const response = await fetch(`${apiEndpoint}/${userEmail}`)
-
+    const userEmail = document.getElementById('email').value
+    const userPassword = document.getElementById('password').value    
+    fetch(`${apiEndpoint}/auth`, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            email: userEmail,
+            password: userPassword
+        })
+    })
+    .then(response => {
         if (!response.ok) {
-            throw new Error(`Erreur HTTP ! Statut : ${response.status}`)
+            throw new Error('Network response was not ok');
         }
-
-        const userData = await response.json()
-        const password = userData.password
-
-        if (password === document.getElementById('password').value) {
-            window.location.href = 'accueil.html'
-            console.log(userData)
-            localStorage.setItem('email', userData.email)
-            localStorage.setItem('id', userData.id)
-            localStorage.setItem('nom', userData.nom)
-            localStorage.setItem('prenom', userData.prenom)
-            localStorage.setItem('password', userData.password)
-            localStorage.setItem('tel', userData.tel)
-            localStorage.setItem('clients', userData.clients)
-            localStorage.setItem('submission', userData.submission)
-        } else {
-            document.getElementById('password-placeholder').textContent = 'Mot de passe incorrect'
-            document.getElementById('password-placeholder').style.color = 'red'
-        }
-    } catch (error) {
-        console.error('Erreur :', error)
-    }
+        return response.json(); // Renvoyer la promesse de la conversion JSON
+    })
+    .then(data => {
+        const token = data.token;
+        console.log(token);
+        localStorage.setItem('jwt-token', token)
+        window.location.href = 'accueil.html';
+    })
+    .catch(error => {
+        console.error('There was an error with the fetch operation:', error);
+    });
 }
