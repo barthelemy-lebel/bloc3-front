@@ -2,7 +2,7 @@ const apiEndpoint = 'http://127.0.0.1:8000'
 
 async function login() {
     const userEmail = document.getElementById('email').value
-    const userPassword = document.getElementById('password').value    
+    const userPassword = document.getElementById('password').value
     fetch(`${apiEndpoint}/auth`, {
         method: 'POST',
         headers: {
@@ -22,10 +22,9 @@ async function login() {
     })
     .then(data => {
         const token = data.token;
-        console.log(token);
         localStorage.setItem('jwt-token', token)
         localStorage.setItem('email', userEmail)
-        window.location.href = 'accueil.html';
+        window.location.href = 'accueilV2.html';
     })
     .catch(error => {
         console.error('There was an error with the fetch operation:', error);

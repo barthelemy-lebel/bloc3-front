@@ -1,14 +1,22 @@
-const apiEndpoint = 'http://127.0.0.1:8000'
-const adminId = localStorage.getItem('id')
+const adminId = localStorage.getItem('userId')
 const invitationLink = `http://127.0.0.1:5500/src/client/signup.html?adminID=${adminId}`
 document.getElementById('invitation-link').textContent = invitationLink
 document.getElementById('invitation-link').setAttribute('href', invitationLink)
+
+const apiEndpoint = 'http://127.0.0.1:8000'
+const selectClient = document.getElementById("clients-list")
+const token = localStorage.getItem('jwt-token')
 
 function getKeyByValue(object, value) {
   return Object.keys(object).find(key => object[key] === value)
 }
 
-fetch(`${apiEndpoint}/api/admins/${adminId}`)
+fetch(`${apiEndpoint}/api/users/${localStorage.getItem('userId')}`, {
+  method: 'GET',
+  headers: {
+    'Authorization': `Bearer ${token}`
+  }
+  })
   .then(response => {
     if (!response.ok) {
       throw new Error(`Erreur HTTP ! Statut : ${response.status}`)
@@ -31,16 +39,16 @@ fetch(`${apiEndpoint}/api/admins/${adminId}`)
         .then(clientData => {
           
           let row = document.createElement("tr")
-          row.className = "bg-white border-b border-gray-700"
+          row.className = "bg-white border border-gray-700"
 
           let nameCell = document.createElement("td")
           nameCell.setAttribute("scope", "row")
-          nameCell.className = "px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+          nameCell.className = "px-6 py-4 font-medium text-gray-900 whitespace-nowrap border border-gray-700"
           nameCell.textContent = `${clientData.name} ${clientData.firstname}`
           row.appendChild(nameCell)
 
           let emailCell = document.createElement("td");
-          emailCell.className = "px-6 py-4 text-main-purple";
+          emailCell.className = "px-6 py-4 text-main-purple border border-gray-700";
           let emailLink = document.createElement("a");
           emailLink.href = `mailto:${clientData.email}`;
           emailLink.textContent = clientData.email;
@@ -48,7 +56,7 @@ fetch(`${apiEndpoint}/api/admins/${adminId}`)
           row.appendChild(emailCell);
 
           let telCell = document.createElement("td")
-          telCell.className = "px-6 py-4 text-main-purple"
+          telCell.className = "px-6 py-4 text-main-purple border border-gray-700"
           let telLink = document.createElement('a')
           telLink.setAttribute('href', `tel:${clientData.tel}`)
           telLink.textContent = clientData.tel 
@@ -59,7 +67,7 @@ fetch(`${apiEndpoint}/api/admins/${adminId}`)
           actionsCell.className = "px-6 py-4 flex flex-row"
 
           let clientActions = {
-            'Supprimer': `${apiEndpoint}/api/clients/${clientData.id}`,
+            'Supprimer': `${apiEndpoint}/api/users/${clientData.id}`,
             'Télécharger': `${apiEndpoint}/api/documents/`
           }
           for (let actionKey in clientActions) {
