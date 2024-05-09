@@ -5,10 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../output.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Madimi+One&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/x-icon" href="../assets/logo-purple.png">
+  <link rel="icon" type="image/x-icon" href="../assets/logo-purple.png">  
+  <script src="/src/client/script/document.js" defer></script>
+  <script src="/src/firebase.js" type="module" defer></script>
+
   <title>Document</title>
 </head>
-<body>
+<body class="h-full">
   <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
     <span class="sr-only">Open sidebar</span>
     <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -50,5 +53,34 @@
       </ul>
     </div>
   </aside>
+  <h1 class="text-6xl ml-72 my-4 font-semibold">Mon espace document :</h1>
+  <div class="relative overflow-x-auto ml-72 mt-8 mr-10 flex flex-rox items-start gap-8 h-full">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400" id="clients-tab">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 light:bg-gray-700 light:text-gray-400">
+            <tr>
+                <th scope="col" class="w-2/3 px-6 py-3 border border-gray-700">
+                    Nom
+                </th>
+                <th scope="col" class="px-6 py-3 border border-gray-700">
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <div class="flex items-center justify-center w-full">
+      <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">Ajouter un document
+          <div class="flex flex-col items-center justify-center pt-5 pb-6">
+              <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+              </svg>
+              <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Clicker pour ajouter</span> ou glisser et déposer</p>
+              <p class="text-xs text-gray-500 dark:text-gray-400">PNG, JPEG, PDF, DOCX...</p>
+          </div>
+          <input id="dropzone-file" type="file" class="hidden"/>
+      </label>
+  </div> 
+</div>
 </body>
 </html>

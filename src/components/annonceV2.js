@@ -103,6 +103,10 @@ class AnnonceImmobiliere extends LitElement {
       font-size: 1rem;
       font-weight: 600;
       margin-bottom: 0.5rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 60%;
     }
 
     .location,

@@ -66,7 +66,6 @@ fetchUserData(apiEndpoint, token, userEmail)
     const submissionClient = userSubmissions['hydra:member'].filter(submission => {
       return submission.clients && submission.clients.length > 0 && submission.clients[0] === `/api/users/${localStorage.getItem('userId')}`;
     });
-    console.log(submissionClient)
     document.getElementById('main-nbAnnonces').textContent = submissionClient.length;
     displaySubmissions(submissionClient);
   })

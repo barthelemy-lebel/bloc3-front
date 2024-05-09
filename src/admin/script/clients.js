@@ -37,7 +37,7 @@ fetch(`${apiEndpoint}/api/users/${localStorage.getItem('userId')}`, {
           return response.json()
         })
         .then(clientData => {
-          
+          console.log(clientData)
           let row = document.createElement("tr")
           row.className = "bg-white border border-gray-700"
 
@@ -77,33 +77,62 @@ fetch(`${apiEndpoint}/api/users/${localStorage.getItem('userId')}`, {
             if (getKeyByValue(clientActions, clientActions[actionKey]) === "Supprimer") {
               method = "DELETE"
               bg_button = "bg-red-500"
-            } else {
+              actionButton.className = `${bg_button} rounded-lg p-2 text-white mr-4`
+              actionButton.textContent = actionKey.charAt(0).toUpperCase() + actionKey.slice(1)
+              actionButton.title = 'Supprimer le client'
+              actionsCell.appendChild(actionButton)
+            } else if (clientData.documents.length != 0) {
               method = "GET"
               bg_button = "bg-green-600"
+              console.log(clientData.documents)
+              actionButton.className = `${bg_button} rounded-lg p-2 text-white mr-4`
+              actionButton.textContent = actionKey.charAt(0).toUpperCase() + actionKey.slice(1)
+              actionButton.title = 'Télécharger les documents'
+              actionsCell.appendChild(actionButton)
             }
-            actionButton.className = `${bg_button} rounded-lg p-2 text-white mr-4`
-            actionButton.textContent = actionKey.charAt(0).toUpperCase() + actionKey.slice(1)
-            actionsCell.appendChild(actionButton)
+            
             actionButton.addEventListener('click', function(){
-              let actionUrl = clientActions[actionKey]
-              console.log(method, actionUrl)
-              fetch(actionUrl, {
-                method: method,
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-              })
-              .then(response => {
-                if (!response.ok) {
-                  throw new Error(`Erreur HTTP ! Statut : ${response.status}`)
-                }
-              })
-              .catch(error => {
-                console.error('Erreur lors de la requête DELETE :', error)
-              })
-              setTimeout(function() {
-                location.reload()
-              }, 500)
+              if (method == "DELETE") {
+                let actionUrl = clientActions[actionKey]
+                console.log(method, actionUrl)
+                fetch(actionUrl, {
+                  method: method,
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                })
+                .then(response => {
+                  if (!response.ok) {
+                    throw new Error(`Erreur HTTP ! Statut : ${response.status}`)
+                  }
+                })
+                .catch(error => {
+                  console.error('Erreur lors de la requête DELETE :', error)
+                })
+                setTimeout(function() {
+                  location.reload()
+                }, 500)
+              } else {
+                documents = []
+                clientData.documents.forEach(documentUrl => {
+                  fetch(`${apiEndpoint}${documentUrl}`)
+                    .then(response => {
+                      if (!response.ok) {
+                        throw new Error(`Erreur HTTP ! Statut : ${response.status}`)
+                      }
+                      return response.json()
+                    })
+                    .then(documentData => {
+                      console.log(documentData)
+                      window.open(documentData.path, "_blank")
+                      documents.push(documentData.title)
+                    })
+                    .catch(error => {
+                      console.error('Erreur lors de la requête clientData :', error)
+                    })
+                });
+                alert(documents)
+              }
             })
           }
 
