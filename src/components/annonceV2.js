@@ -19,7 +19,7 @@ class Client extends LitElement {
   `
 
   render() {
-    const apiEndpoint = 'http://127.0.0.1:8000'
+    const apiEndpoint = 'http://127.0.0.1:8000/'
     const token = localStorage.getItem('jwt-token')
     if (this.client) {
       fetch(`${apiEndpoint}${this.client}`, {
