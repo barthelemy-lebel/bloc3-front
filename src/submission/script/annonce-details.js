@@ -1,4 +1,4 @@
-const apiEndpoint = 'http://127.0.0.1:8000/api/submissions/';
+const apiEndpoint = 'http://127.0.0.1:8000';
 const urlParams = new URLSearchParams(window.location.search);
 const submissionId = urlParams.get('id');
 const role = localStorage.getItem('role');
@@ -10,7 +10,7 @@ if (role == "ROLE_CLIENT") {
 
 const fetchSubmissionData = async () => {
   try {
-    const response = await fetch(`${apiEndpoint}${submissionId}`);
+    const response = await fetch(`${apiEndpoint}/api/submissions/${submissionId}`);
     if (!response.ok) {
       throw new Error(`Erreur HTTP ! Statut : ${response.status}`);
     }
@@ -24,7 +24,7 @@ const fetchSubmissionData = async () => {
     document.getElementById('submission-description').textContent = submissionData.description;
     if (submissionData.image_path) {
       document.getElementById('submission-image').src = submissionData.image_path;
-    }    
+    }
 
     // Récupération des coordonnées géographiques et affichage sur la carte
     const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(submissionData.location)}&format=json&limit=1`;
@@ -43,12 +43,20 @@ const fetchSubmissionData = async () => {
       color: 'red',
       fillColor: '#f03',
       fillOpacity: 0.5,
-      radius: 200
+      radius: 400
     }).addTo(map);
 
     L.marker([latitude, longitude]).addTo(map)
       .bindPopup(submissionData.title)
       .openPopup();
+
+    const client_apiEndpoint = '127.0.0.1:8000'
+    const response_client = await fetch(`${apiEndpoint}${submissionData.clients[0]}`);
+    if (!response_client.ok) {
+      throw new Error(`Erreur HTTP ! Statut : ${response_client.status}`);
+    }
+    const clientData = await response_client.json();
+    document.getElementById('client').textContent = `${clientData.firstname} ${clientData.name}`
   } catch (error) {
     console.error('Erreur lors de la récupération des données de soumission :', error);
   }

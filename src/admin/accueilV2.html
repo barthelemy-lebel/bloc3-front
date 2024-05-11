@@ -30,8 +30,8 @@
       
       <ul class="space-y-2 font-medium">
           <li>
-            <a href="accueilV2.html" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                <svg class="w-8 h-8 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-purple-500 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
+            <a href="accueilV2.html" class="flex items-center p-2 text-purple-600 rounded-lg dark:text-white bg-gray-100 group">
+                <svg class="w-8 h-8 text-purple-600 transition duration-75 dark:text-gray-400 group-hover:text-purple-500 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
                   <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/>
                   <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"/>
                 </svg>
@@ -71,7 +71,7 @@
     <h1 class="text-3xl xl:text-5xl xs:text-3xl">Annonces : <span id="main-nbAnnonces" class="text-purple-400 font-semibold"></span></h1>
     <h1 class="text-3xl xl:text-5xl xs:text-3xl">Clients           : <span id="main-nbClients" class="text-purple-400 font-semibold"></span></h1>
 
-    <div class="add-submission flex flex-col xl:w-5/12 mr-16 mt-8 border p-4 rounded-lg w-full shadow-lg">
+    <div class="flex flex-col xl:w-5/12 mr-16 mt-8 border p-4 rounded-lg w-full shadow-lg">
       <h3 class="text-2xl">Ajouter une annonce</h3>
       <div class="flex flex-row items-center justify-between">
         <div class="w-2/4 mr-4 mt-8">
@@ -139,7 +139,7 @@
               <textarea id="description" name="submission-description" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-sm sm:leading-6 p-2" rows="5"></textarea>
           </div>
       </div>
-      <button class="flex w-32 justify-center m-auto rounded-md bg-purple-500 px-3 py-1.5 mt-8 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-purple-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-500" onclick="addSubmission()">
+      <button class="flex justify-center m-auto rounded-md bg-purple-500 px-3 py-1.5 mt-8 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-purple-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-500 w-full" onclick="addSubmission()">
           Ajouter
       </button>
     </div>
