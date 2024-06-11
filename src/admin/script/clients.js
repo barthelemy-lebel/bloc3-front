@@ -67,8 +67,8 @@ fetch(`${apiEndpoint}/api/users/${localStorage.getItem('userId')}`, {
           actionsCell.className = "px-6 py-4 flex flex-row"
 
           let clientActions = {
-            'Supprimer': `${apiEndpoint}/api/users/${clientData.id}`,
-            'Télécharger': `${apiEndpoint}/api/documents/`
+            'Télécharger': `${apiEndpoint}/api/documents/`,
+            'Supprimer': `${apiEndpoint}/api/users/${clientData.id}`
           }
           for (let actionKey in clientActions) {
             let actionButton = document.createElement("button")
@@ -76,8 +76,8 @@ fetch(`${apiEndpoint}/api/users/${localStorage.getItem('userId')}`, {
             console.log(getKeyByValue(clientActions, clientActions[actionKey]))
             if (getKeyByValue(clientActions, clientActions[actionKey]) === "Supprimer") {
               method = "DELETE"
-              bg_button = "bg-red-500"
-              actionButton.className = `${bg_button} rounded-lg p-2 text-white mr-4`
+              bg_button = "text-red-600"
+              actionButton.className = `${bg_button} p-2 border border-red-600 rounded-lg mr-4 hover:bg-red-600 hover:text-white`
               actionButton.textContent = actionKey.charAt(0).toUpperCase() + actionKey.slice(1)
               actionButton.title = 'Supprimer le client'
               actionsCell.appendChild(actionButton)
