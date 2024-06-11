@@ -112,98 +112,180 @@
       </div>
     </div>
 </aside>
-  <div class="content xl:ml-72 mt-4 flex flex-row">
-    <div class="main flex flex-col w-2/3 items-center">
-      <form class="w-1/2 mr-36">   
-        <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
-        <div class="relative">
-            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                </svg>
-            </div>
-            <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-purple-600 focus:border-purple-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-purple-600 dark:focus:border-purple-600" placeholder="Rechercher une annonce, localisation, clients ..." required />
-            <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-purple-600 hover:bg-purple-600 focus:ring-4 focus:outline-none focus:ring-purple-600 font-medium rounded-lg text-sm px-4 py-2 dark:bg-purple-600 dark:hover:bg-purple-600 dark:focus:ring-purple-600">Rechercher</button>
-        </div>
-      </form>
-      <div class="flex flex-wrap" id="submissions-container">
-      </div>
-    </div>
-    
-    <div class="add-submission flex flex-col ml-1/2 mr-2 xl:w-4/12 border p-4 rounded-lg shadow-lg h-2/3 fixed float-right">
-      <h3 class="text-2xl">Ajouter une annonce</h3>
-      <div class="flex flex-row items-center justify-between">
-        <div class="w-2/4 mr-4 mt-8">
-            <div class="flex items-center justify-between">
-                <label for="submission-title" class="block text-lg font-medium leading-6 text-gray-900">Titre :</label>
-            </div>
-            <div class="mt-2">
-                <input id="title" name="submission-title" type="text" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2">
-            </div>
-        </div>
-  
-        <div class="w-2/4">
-            <div class="flex items-center justify-between mt-8">
-                <label for="submission-location" class="block text-lg font-medium leading-6 text-gray-900">Localisation :</label>
-            </div>
-            <div class="mt-2">
-                <input id="location" name="submission-location" type="text" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2">
-            </div>
-        </div>
-      </div>
-      <div class="flex flex-row items-center justify-between">
-        <div class="w-2/4 mr-4">
-          <div class="flex items-center justify-between mt-4">
-              <label for="submission-location" class="block text-lg font-medium leading-6 text-gray-900">Loyer (en €) :</label>
-          </div>
-          <div class="mt-2">
-              <input id="price" name="submission-price" type="number" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:text-sm sm:leading-6 p-2">
-          </div>
-      </div>
-      <div class="w-2/4">
-          <div class="flex items-center justify-between mt-4">
-              <label for="submission-surface" class="block text-lg font-medium leading-6 text-gray-900">Surface (en m²) :</label>
-          </div>
-          <div class="mt-2">
-              <input id="surface" name="submission-surface" type="number" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:text-sm sm:leading-6 p-2">
-          </div>
-      </div>
-      </div>
-      <div class="flex flex-row items-center justify-between">
-        <div class="w-2/4 mr-4">
-          <div class="flex items-center justify-between mt-4">
-            <label for="submission-image-path" class="block text-lg font-medium leading-6 text-gray-900">Image :</label>
-          </div>
-          <div class="mt-2">
-            <input placeholder="Ajouter depuis votre appareil" id="image-path" name="submission-image-path" type="file" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2">
-          </div>
-        </div>
-        <div class="w-2/4">
-          <div class="flex items-center justify-between mt-4">
-            <label for="submission-image-path" class="block text-lg font-medium leading-6 text-gray-900">Clients :</label>
-          </div>
-          <div class="mt-2">
-            <select id="clients-list" name="submission-image-path" type="select" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-sm sm:leading-6 p-2" style="max-height: 45px; overflow-y: auto;">
-              <option value="aucun client">------</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      
-      <div class="">
-          <div class="flex items-center justify-between mt-8">
-              <label for="submission-description" class="block text-lg font-medium leading-6 text-gray-900">Description :</label>
-          </div>
-          <div class="mt-2">
-              <textarea id="description" name="submission-description" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-sm sm:leading-6 p-2" rows="5"></textarea>
-          </div>
-      </div>
-      <button class="flex w-full justify-center m-auto rounded-md bg-purple-600 px-3 py-1.5 mt-8 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-purple-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600" onclick="addSubmission()">
-          Ajouter
-      </button>
-    </div>
+<div class="content sm:ml-72 mt-4 flex flex-row justify-between">
+  <div class="flex flex-wrap items-center justify-center w-full sm:w-2/3 sm:justify-start sm:items-start h-screen overflow-y-auto" id="submissions-container">
+      <!-- Votre contenu des soumissions ici -->
   </div>
-  
+
+  <!-- Formulaire affiché sur les grands écrans -->
+  <div class="add-submission w-1/3 flex-col items-center mr-8 border px-4 pt-4 rounded-lg shadow-xl bg-white sticky top-0 my-4 hidden sm:flex">
+      <h3 class="text-2xl sm:text-3xl border-b-4 border-purple-500 pb-1">Ajouter une annonce :</h3>
+      <div class="relative mt-4 sm:mt-8 mb-4 w-full">
+          <!-- Champs de formulaire -->
+          <div class="w-full">
+              <div class="flex items-center justify-between">
+                  <label for="submission-title" class="block text-lg font-medium leading-6 text-gray-900">Titre :</label>
+              </div>
+              <div class="mt-2">
+                  <input id="title" name="submission-title" type="text" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2">
+              </div>
+          </div>
+          <div class="mt-4 w-full">
+              <div class="flex items-center justify-between">
+                  <label for="submission-location" class="block text-lg font-medium leading-6 text-gray-900">Localisation :</label>
+              </div>
+              <div class="mt-2">
+                  <input id="location" name="submission-location" type="text" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2">
+              </div>
+          </div>
+          <div class="mt-4 w-full">
+              <div class="flex items-center justify-between">
+                  <label for="submission-price" class="block text-lg font-medium leading-6 text-gray-900">Loyer (en €) :</label>
+              </div>
+              <div class="mt-2">
+                  <input id="price" name="submission-price" type="number" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-500 sm:text-sm sm:leading-6 p-2">
+              </div>
+          </div>
+          <div class="mt-4 w-full">
+              <div class="flex items-center justify-between">
+                  <label for="submission-surface" class="block text-lg font-medium leading-6 text-gray-900">Surface (en m²) :</label>
+              </div>
+              <div class="mt-2">
+                  <input id="surface" name="submission-surface" type="number" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-500 sm:text-sm sm:leading-6 p-2">
+              </div>
+          </div>
+          <div class="mt-4 w-full">
+              <div class="flex items-center justify-between">
+                  <label for="clients-list" class="block text-lg font-medium leading-6 text-gray-900">Clients :</label>
+              </div>
+              <div class="mt-2">
+                  <select id="clients-list" name="clients-list" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-sm sm:leading-6 p-2" style="max-height: 45px; overflow-y: auto;">
+                      <option value="aucun client">------</option>
+                  </select>
+              </div>
+          </div>
+          <div class="mt-4 w-full">
+              <div class="flex items-center justify-between">
+                  <label for="submission-description" class="block text-lg font-medium leading-6 text-gray-900">Description :</label>
+              </div>
+              <div class="mt-2">
+                  <textarea id="description" name="submission-description" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-sm sm:leading-6 p-2" rows="5"></textarea>
+              </div>
+          </div>
+          <div class="mt-4 w-full">
+              <div class="flex items-center justify-center w-full">
+                  <label for="dropzone-file" class="flex flex-col items-center justify-center w-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600 p-2">
+                      Ajouter des photos depuis votre appareil
+                      <div class="flex flex-col items-center justify-center pt-5">
+                          <svg class="w-8 h-8 mb-4 text-purple-600 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                          </svg>
+                          <p class="text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Clicker pour ajouter</span> ou glisser et déposer</p>
+                      </div>
+                      <input id="dropzone-file" type="file" class="hidden"/>
+                  </label>
+              </div>
+          </div>
+          <button class="flex w-full justify-center rounded-md bg-purple-500 px-3 py-1.5 mt-4 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-purple-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-500" onclick="addSubmission()">
+              Ajouter l'annonce
+          </button>
+      </div>
+  </div>
+
+  <!-- Bouton + pour les petits écrans -->
+  <button class="fixed bottom-8 right-8 bg-purple-500 text-white p-4 rounded-full shadow-lg sm:hidden w-14 h-14 text-xl flex items-center justify-center" onclick="toggleModal()">
+      +
+  </button>
+</div>
+
+<!-- Modal pour le formulaire sur les petits écrans -->
+<div id="modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center hidden">
+  <div class="bg-white w-11/12 max-w-md mx-auto p-6 rounded-lg">
+      <div class="flex justify-between items-center mb-4">
+          <h3 class="text-xl font-semibold">Ajouter une annonce :</h3>
+          <button onclick="toggleModal()" class="text-gray-500 hover:text-gray-700">
+              &times;
+          </button>
+      </div>
+      <div class="relative mt-4 sm:mt-8 mb-4 w-full">
+          <!-- Champs de formulaire (même code que pour le formulaire grand écran) -->
+          <div class="w-full">
+              <div class="flex items-center justify-between">
+                  <label for="modal-submission-title" class="block text-lg font-medium leading-6 text-gray-900">Titre :</label>
+              </div>
+              <div class="mt-2">
+                  <input id="modal-title" name="modal-submission-title" type="text" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2">
+              </div>
+          </div>
+          <div class="mt-4 w-full">
+              <div class="flex items-center justify-between">
+                  <label for="modal-submission-location" class="block text-lg font-medium leading-6 text-gray-900">Localisation :</label>
+              </div>
+              <div class="mt-2">
+                  <input id="modal-location" name="modal-submission-location" type="text" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2">
+              </div>
+          </div>
+          <div class="mt-4 w-full">
+              <div class="flex items-center justify-between">
+                  <label for="modal-submission-price" class="block text-lg font-medium leading-6 text-gray-900">Loyer (en €) :</label>
+              </div>
+              <div class="mt-2">
+                  <input id="modal-price" name="modal-submission-price" type="number" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-500 sm:text-sm sm:leading-6 p-2">
+              </div>
+          </div>
+          <div class="mt-4 w-full">
+              <div class="flex items-center justify-between">
+                  <label for="modal-submission-surface" class="block text-lg font-medium leading-6 text-gray-900">Surface (en m²) :</label>
+              </div>
+              <div class="mt-2">
+                  <input id="modal-surface" name="modal-submission-surface" type="number" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-500 sm:text-sm sm:leading-6 p-2">
+              </div>
+          </div>
+          <div class="mt-4 w-full">
+              <div class="flex items-center justify-between">
+                  <label for="modal-clients-list" class="block text-lg font-medium leading-6 text-gray-900">Clients :</label>
+              </div>
+              <div class="mt-2">
+                  <select id="modal-clients-list" name="modal-clients-list" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-sm sm:leading-6 p-2" style="max-height: 45px; overflow-y: auto;">
+                      <option value="aucun client">------</option>
+                  </select>
+              </div>
+          </div>
+          <div class="mt-4 w-full">
+              <div class="flex items-center justify-between">
+                  <label for="modal-submission-description" class="block text-lg font-medium leading-6 text-gray-900">Description :</label>
+              </div>
+              <div class="mt-2">
+                  <textarea id="modal-description" name="modal-submission-description" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-sm sm:leading-6 p-2" rows="5"></textarea>
+              </div>
+          </div>
+          <div class="mt-4 w-full">
+              <div class="flex items-center justify-center w-full">
+                  <label for="modal-dropzone-file" class="flex flex-col items-center justify-center w-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600 p-2">
+                      Ajouter des photos depuis votre appareil
+                      <div class="flex flex-col items-center justify-center pt-5">
+                          <svg class="w-8 h-8 mb-4 text-purple-600 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                          </svg>
+                          <p class="text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Clicker pour ajouter</span> ou glisser et déposer</p>
+                      </div>
+                      <input id="modal-dropzone-file" type="file" class="hidden"/>
+                  </label>
+              </div>
+          </div>
+          <button class="flex w-full justify-center rounded-md bg-purple-500 px-3 py-1.5 mt-4 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-purple-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-500" onclick="addSubmission()">
+              Ajouter l'annonce
+          </button>
+      </div>
+  </div>
+</div>
+
+<script>
+function toggleModal() {
+  const modal = document.getElementById('modal')
+  modal.classList.toggle('hidden')
+}
+</script>
 
 </body>
 </html>

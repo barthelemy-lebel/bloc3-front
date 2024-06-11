@@ -101,7 +101,7 @@ function modifySubmission() {
   }
 
   // Effectuer la requête PATCH avec les données modifiées
-  fetch(`${apiEndpoint}${submissionId}`, {
+  fetch(`${apiEndpoint}/api/submissions/${submissionId}`, {
     method: 'PATCH',
     headers: {
       'Authorization': `Bearer ${token}`,
