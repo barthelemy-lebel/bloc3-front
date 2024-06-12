@@ -12,19 +12,56 @@
   <title>Document</title>
 </head>
 <body class="h-full">
-  <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
-    <span class="sr-only">Open sidebar</span>
-    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-    <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
-    </svg>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const sidebar = document.getElementById('default-sidebar')
+      const sidebarToggle = document.getElementById('sidebarToggle')
+      const sidebarLogo = document.getElementById('sidebarLogo')
+  
+      let isSidebarOpen = false
+  
+      const toggleSidebar = () => {
+          isSidebarOpen = !isSidebarOpen
+          sidebar.classList.toggle('-translate-x-full', !isSidebarOpen)
+      }
+  
+      const closeSidebar = () => {
+          isSidebarOpen = false
+          sidebar.classList.add('-translate-x-full')
+      }
+  
+      sidebarToggle.addEventListener('click', (event) => {
+          event.stopPropagation()
+          toggleSidebar()
+      })
+  
+      sidebarLogo.addEventListener('click', (event) => {
+          event.stopPropagation()
+          closeSidebar()
+      })
+  
+      document.addEventListener('click', (event) => {
+          const isClickInside = sidebar.contains(event.target) || sidebarToggle.contains(event.target)
+          if (!isClickInside && isSidebarOpen) {
+              closeSidebar()
+          }
+      })
+  })
+  
+  </script>
+  <button id="sidebarToggle" aria-controls="default-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+      <span class="sr-only">Open sidebar</span>
+      <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
+      </svg>
   </button>
-
+  
   <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
-    <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-      <div class="flex flex-row items-end mb-4">
-        <img src="/src/assets/logo-purple.png" alt="logo-meetimo" class="w-14 h-12">
-        <h1 class="text-xl font-semibold font-madimi-one">MeetImo</h1>
-      </div>
+      <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+          <div id="sidebarLogo" class="flex flex-row items-end mb-4">
+              <img src="/src/assets/logo-purple.png" alt="logo-meetimo" class="w-14 h-12">
+              <h1 class="text-xl font-semibold font-madimi-one">MeetImo</h1>
+          </div>
       <ul class="space-y-2 font-medium">
         <li>
           <a href="/src/client/accueil.html" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
@@ -35,8 +72,8 @@
           </a>
         </li>
         <li>
-          <a href="/src/client/document.html" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-              <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-purple-500 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+          <a href="/src/client/document.html" class="flex items-center p-2 text-purple-600 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+              <svg class="flex-shrink-0 w-5 h-5 text-purple-500 transition duration-75 dark:text-gray-400 group-hover:text-purple-500 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                 <path d="m17.418 3.623-.018-.008a6.713 6.713 0 0 0-2.4-.569V2h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2H9.89A6.977 6.977 0 0 1 12 8v5h-2V8A5 5 0 1 0 0 8v6a1 1 0 0 0 1 1h8v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4h6a1 1 0 0 0 1-1V8a5 5 0 0 0-2.582-4.377ZM6 12H4a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Z"/>
               </svg>
               <span class="flex-1 ms-3 whitespace-nowrap">Documents</span>
@@ -53,34 +90,31 @@
       </ul>
     </div>
   </aside>
-  <h1 class="text-6xl ml-72 my-4 font-semibold">Mes documents :</h1>
-  <div class="relative overflow-x-auto ml-72 mt-8 mr-10 flex flex-rox items-start gap-8 h-full">
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400" id="clients-tab">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 light:bg-gray-700 light:text-gray-400">
-            <tr>
-                <th scope="col" class="w-2/3 px-6 py-3 border border-gray-700">
-                    Nom
-                </th>
-                <th scope="col" class="px-6 py-3 border border-gray-700">
-                    Actions
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-    <div class="flex items-center justify-center w-full">
-      <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">Ajouter un document
-          <div class="flex flex-col items-center justify-center pt-5 pb-6">
-              <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-              </svg>
-              <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Clicker pour ajouter</span> ou glisser et déposer</p>
-              <p class="text-xs text-gray-500 dark:text-gray-400">PNG, JPEG, PDF, DOCX...</p>
-          </div>
-          <input id="dropzone-file" type="file" class="hidden"/>
-      </label>
-  </div> 
-</div>
+  <h1 class="text-2xl sm:text-4xl lg:text-6xl ml-4 sm:ml-16 lg:ml-72 my-4 font-semibold">Mes documents :</h1>
+  <div class="relative overflow-x-auto mx-4 sm:mx-16 lg:ml-72 mt-8 mr-10 flex flex-row flex-wrap items-start gap-8 h-full">
+      <table class="w-full sm:w-3/5 text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 sm:bg-white rounded-lg overflow-hidden sm:shadow-lg" id="clients-tab">
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50 light:bg-gray-700 light:text-gray-400">
+              <tr>
+                  <th scope="col" class="w-2/3 px-6 py-3 border border-gray-700">Nom</th>
+                  <th scope="col" class="px-6 py-3 border border-gray-700">Actions</th>
+              </tr>
+          </thead>
+          <tbody>
+              <!-- Dynamic rows will be inserted here -->
+          </tbody>
+      </table>
+      <div class="flex items-center justify-center w-full sm:w-2/5 :w-auto lg:flex-1">
+          <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+              <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                  <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                  </svg>
+                  <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Clicker pour ajouter</span> ou glisser et déposer</p>
+                  <p class="text-xs text-gray-500 dark:text-gray-400">PNG, JPEG, PDF, DOCX...</p>
+              </div>
+              <input id="dropzone-file" type="file" class="hidden"/>
+          </label>
+      </div>
+  </div>
 </body>
 </html>
