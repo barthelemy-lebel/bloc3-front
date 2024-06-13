@@ -1,0 +1,59 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeetImo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="/src/output.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/src/assets/logo-purple.png">
+    <link href="https://fonts.googleapis.com/css2?family=Madimi+One&display=swap" rel="stylesheet">
+
+    <script src="/src/admin/script/login.js" defer></script>
+    <script src="/src/admin/script/base.js" defer></script>
+    <script type="module" src="/src/components/annonceV2.js"></script>
+    
+</head>
+<body>
+    <div id="app"></div>
+
+    <script src="https://unpkg.com/vanilla-router/dist/vanilla-router.min.js"></script>
+    <script src="/src/admin/script/router.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const sidebar = document.getElementById('default-sidebar')
+          const sidebarToggle = document.getElementById('sidebarToggle')
+          const sidebarLogo = document.getElementById('sidebarLogo')
+      
+          let isSidebarOpen = false
+      
+          const toggleSidebar = () => {
+              isSidebarOpen = !isSidebarOpen
+              sidebar.classList.toggle('-translate-x-full', !isSidebarOpen)
+          }
+      
+          const closeSidebar = () => {
+              isSidebarOpen = false
+              sidebar.classList.add('-translate-x-full')
+          }
+      
+          sidebarToggle.addEventListener('click', (event) => {
+              event.stopPropagation()
+              toggleSidebar()
+          })
+      
+          sidebarLogo.addEventListener('click', (event) => {
+              event.stopPropagation()
+              closeSidebar()
+          })
+      
+          document.addEventListener('click', (event) => {
+              const isClickInside = sidebar.contains(event.target) || sidebarToggle.contains(event.target)
+              if (!isClickInside && isSidebarOpen) {
+                  closeSidebar()
+              }
+          })
+        })
+      
+    </script>
+</body>
+</html>

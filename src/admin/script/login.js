@@ -24,7 +24,7 @@ async function login() {
         const token = data.token;
         localStorage.setItem('jwt-token', token)
         localStorage.setItem('email', userEmail)
-        window.location.href = 'accueilV2.html';
+        location.hash = '#/accueil';
     })
     .catch(error => {
         console.error('There was an error with the fetch operation:', error);

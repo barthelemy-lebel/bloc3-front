@@ -1,6 +1,5 @@
-const apiEndpoint = 'http://127.0.0.1:8000'
-const token = localStorage.getItem('jwt-token')
-const id = localStorage.getItem('userId')
+
+id = localStorage.getItem('userId')
 
 fetch(`${apiEndpoint}/api/users/${id}`)
   .then(response => {
@@ -105,4 +104,43 @@ function addSubmission() {
   .catch(error => {
     console.error('Erreur lors de la requête :', error);
   });
+}
+
+
+const sidebar = document.getElementById('default-sidebar')
+const sidebarToggle = document.getElementById('sidebarToggle')
+const sidebarLogo = document.getElementById('sidebarLogo')
+
+let isSidebarOpen = false
+
+const toggleSidebar = () => {
+    isSidebarOpen = !isSidebarOpen
+    sidebar.classList.toggle('-translate-x-full', !isSidebarOpen)
+}
+
+const closeSidebar = () => {
+    isSidebarOpen = false
+    sidebar.classList.add('-translate-x-full')
+}
+
+sidebarToggle.addEventListener('click', (event) => {
+    event.stopPropagation()
+    toggleSidebar()
+})
+
+sidebarLogo.addEventListener('click', (event) => {
+    event.stopPropagation()
+    closeSidebar()
+})
+
+document.addEventListener('click', (event) => {
+    const isClickInside = sidebar.contains(event.target) || sidebarToggle.contains(event.target)
+    if (!isClickInside && isSidebarOpen) {
+        closeSidebar()
+    }
+})
+
+function toggleModal() {
+  const modal = document.getElementById('modal')
+  modal.classList.toggle('hidden')
 }

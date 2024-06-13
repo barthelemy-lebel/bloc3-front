@@ -1,7 +1,5 @@
-const apiEndpoint = 'http://127.0.0.1:8000'
-const token = localStorage.getItem('jwt-token')
-const adminEmail= localStorage.getItem('email')
-
+token = localStorage.getItem('jwt-token')
+adminEmail= localStorage.getItem('email')
 fetch(`${apiEndpoint}/api/users/email/${adminEmail}`, {
   method: 'GET',
   headers: {
@@ -15,7 +13,6 @@ fetch(`${apiEndpoint}/api/users/email/${adminEmail}`, {
     return response.json()
   })
   .then(adminData => {
-    console.log(adminData)
     localStorage.setItem('userId', adminData.id)
   })
   .catch(error => {
@@ -35,7 +32,6 @@ fetch(`${apiEndpoint}/api/users/${localStorage.getItem('userId')}`, {
     return response.json()
   })
   .then(adminData => {
-    console.log(adminData)
     document.getElementById('name').textContent = adminData.firstname
     document.getElementById('main-nbClients').textContent = adminData.clients.length
     document.getElementById('main-nbAnnonces').textContent = adminData.submissions.length
@@ -65,7 +61,6 @@ function addSubmission() {
     return response.json();
   })
   .then(data => {
-    console.log(url)
     localStorage.setItem('url', url)
     // Construisez formData une fois que le fichier est envoyé
     const formData = {
@@ -96,10 +91,42 @@ function addSubmission() {
     return response.json();
   })
   .then(data => {
-    console.log(data)
     location.reload();
   })
   .catch(error => {
     console.error('Erreur lors de la requête :', error);
   });
 }
+
+const sidebar = document.getElementById('default-sidebar')
+const sidebarToggle = document.getElementById('sidebarToggle')
+const sidebarLogo = document.getElementById('sidebarLogo')
+
+let isSidebarOpen = false
+
+const toggleSidebar = () => {
+    isSidebarOpen = !isSidebarOpen
+    sidebar.classList.toggle('-translate-x-full', !isSidebarOpen)
+}
+
+const closeSidebar = () => {
+    isSidebarOpen = false
+    sidebar.classList.add('-translate-x-full')
+}
+
+sidebarToggle.addEventListener('click', (event) => {
+    event.stopPropagation()
+    toggleSidebar()
+})
+
+sidebarLogo.addEventListener('click', (event) => {
+    event.stopPropagation()
+    closeSidebar()
+})
+
+document.addEventListener('click', (event) => {
+    const isClickInside = sidebar.contains(event.target) || sidebarToggle.contains(event.target)
+    if (!isClickInside && isSidebarOpen) {
+        closeSidebar()
+    }
+})
